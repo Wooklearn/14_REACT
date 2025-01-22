@@ -9,6 +9,13 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+
+    <style>
+
+        
+
+    </style>
+
 </head>
 <body>
     <div id="root"></div>
@@ -29,8 +36,7 @@
 
             // 현재 날짜 가져오기
             const today = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = today.toLocaleDateString('ko-KR', options);
+            const formattedDate = today.toLocaleDateString(today);
 
             // 인풋 text 눌렀을 시 반응
             const onChangeHandler = (e) => setText(e.target.value);
@@ -56,7 +62,7 @@
             // todoList 화면에 뿌리기
             const todoList = todos.map(todo => (
                 <li key={todo.id}>
-                    <input type="checkbox" />
+                    <input type="checkbox"/>
                     {todo.todoName}
                     <button onClick={() => onRemove(todo.id)}>x</button> {/* id를 인자로 넘김 */}
                 </li>
