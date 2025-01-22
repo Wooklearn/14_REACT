@@ -17,18 +17,6 @@
         const { useState } = React;
 
         function Todo() {
-
-
-
-            // 인풋창 입력-----
-            // 입력받은 내용 추가하기-----
-            // 화면에 그려주기-----
-            // 체크박스 누르면 리스트 - 표시
-            // 삭제버튼
-            // 삭제버튼 누르면 삭제
-
-
-
             // todo 내용 상태
             const [todos, setTodos] = useState([
                 { id: '1', todoName: '할일 목록을 추가할 것' },
@@ -61,16 +49,18 @@
 
             // 삭제하기
             const onRemove = id => {
-
-            const filterTodos = todos.filter(todo => todos.id !== id);
-
-            setUsers(filterTodos);
-
-        }
-
+                const filterTodos = todos.filter(todo => todo.id !== id);
+                setTodos(filterTodos); // 'setUsers' 대신 'setTodos'로 수정
+            };
 
             // todoList 화면에 뿌리기
-            const todoList = todos.map(todo => (<li key={todo.id}> <input type="checkbox"/> {todo.todoName} <button onClick={onRemove}>x</button></li>));
+            const todoList = todos.map(todo => (
+                <li key={todo.id}>
+                    <input type="checkbox" />
+                    {todo.todoName}
+                    <button onClick={() => onRemove(todo.id)}>x</button> {/* id를 인자로 넘김 */}
+                </li>
+            ));
 
             return (
                 <>
