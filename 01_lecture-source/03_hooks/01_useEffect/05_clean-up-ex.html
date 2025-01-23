@@ -26,6 +26,12 @@
                     console.log(new Date().toLocaleTimeString());
                 }, 1000);
 
+                // 정리함수는 useEffect 를 리턴함으로서 실행할 수 있다.
+                return () => {
+                    clearInterval(timer)
+                    console.log('타이머 종료됨!!!')
+                }
+
             }, []);
 
             return <h1>타이머 시작됩니다!!!</h1>
@@ -37,14 +43,13 @@
 
             return(
                 <>
-                    <button
-                    onClick={() => setIsShow(!isShow)}
-                    >타이머 토글!!</button>
+                    <button onClick={() => setIsShow(!isShow)}>타이머 토글!!</button>
+                    {isShow && <Timer/>}
                 </>
             );
         }
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<Timer/>);
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
     </script>
 </body>
 </html>
