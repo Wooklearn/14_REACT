@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        
+        // 처음 시작할 때 콘솔창 뜸
+        // 콘솔창에 123 입력
+        // 입력 후 화면에 123과 input창 뜸
+        // 123과 일치하면 몇 초 걸렸는지 alert 창 뜸
+        // 다를 시 반응 x
+
+        const {useState, useEffect} = React;
+
+        function StartAlert () {
+
+            const value = prompt('문자열을 입력하세요');
+
+            const onChangeHandler = (e) => e.target.value;
+            const onKeyPressHandler = (e) => {
+                if (e.key === 'Enter') {
+                    if (value === value) {
+                        alert('입력한 값이 같습니다!');
+                    }
+                }
+                
+            }
+
+
+
+            return (
+                <>
+                    <h1>{value}</h1>
+                    <input
+                    type="text"
+                    onChange={onChangeHandler}
+                    onKeyPress={onKeyPressHandler}
+                    />
+
+
+
+                </>
+            );
+        }
+
+
+
+        
+        
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<StartAlert/>);
+    </script>
+</body>
+</html>
