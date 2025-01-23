@@ -35,6 +35,9 @@
             useEffect(() => {
                 console.log('ID 업데이트 감지!!!')
             }, [form.userId])
+            // useEffect 는 마운트시점에 동작을 하고
+            // 또한 원하는 값의 변경 시점에만 동작을 하게
+            // 만들 수 있다.
 
             useEffect(() => {
                 console.log('PWD 업데이트 감지!!!')
