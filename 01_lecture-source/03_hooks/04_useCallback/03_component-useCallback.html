@@ -22,6 +22,22 @@
             const [size, setSize] = useState(200);
             const [isDark, setIsDark] = useState(false);
 
+            // 자식 컴포넌트에 절달 해줄 값
+            // const squareStyle = {
+            //     backgroundColor : 'red',
+            //     width : `${size}px`,
+            //     height : `${size}px`
+            // }
+
+            const squareStyle = useCallback(() => {
+                // squareStyle 함수가 호출되면 return 할 객체 정의
+                return {
+                    backgroundColor : 'red',
+                    width : `${size}px`,
+                    height : `${size}px`
+                }
+            },[size]);
+
             return(
                 <div style={{backgroundColor: isDark ? 'black' : 'white'}}>
                     <input 
@@ -31,10 +47,31 @@
                     onChange={(e) => setSize(e.target.value)}
                     />
                     <button onClick={() => setIsDark(!isDark)}>{isDark.toString()}</button>
+                    <Square squareStyle={squareStyle}/>
+
                 </div>
             );
 
+        }
 
+        function Square({squareStyle}) {
+            
+            const [style, setStyle] = useState({});
+
+            console.log('자식 업데이트 확인용 구문');
+
+            /* 
+                부모인 APP 컴포넌트가 업데이트가 되어 자식인 Square도 리렌더링이 될 때,
+                부모가 주는 props 에 변화가 생길 때 자식도 어쩔 수 없이 리렌더링이 된다.
+            */
+            useEffect(() => {
+                console.log('style 변경!!');
+                setStyle(squareStyle());
+            }, [squareStyle]);
+
+            return(
+                <div style={style}></div>
+            );
 
         }
 
