@@ -15,7 +15,26 @@
 
     <script type="text/babel">
 
+        const {useState, useEffect, useCallback} = React;
+
         function App() {
+
+            const [size, setSize] = useState(200);
+            const [isDark, setIsDark] = useState(false);
+
+            return(
+                <div style={{backgroundColor: isDark ? 'black' : 'white'}}>
+                    <input 
+                    type="range"
+                    min="100"
+                    max="300"
+                    onChange={(e) => setSize(e.target.value)}
+                    />
+                    <button onClick={() => setIsDark(!isDark)}>{isDark.toString()}</button>
+                </div>
+            );
+
+
 
         }
 
