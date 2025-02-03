@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        /*
+            1. 관리 할 상태값 = input 검색어/ image
+            2. 발생하는 이벤트 = input change, 검색 click
+            3. 컴포넌트 = App, searchBox, imageBox
+            4. 시점 = 검색 버튼 누를 시 이미지 경로 set
+        */
+
+        const {useState} = React;
+
+        function App() {
+
+            const [imgURL, setImgURL] = useState('');
+
+            return (
+                <>
+                    <SearchBox setImgURL={setImgURL}/>
+                    <br/>
+                    <ImageBox imgURL={imgURL}/>
+                </>
+            );
+        }
+
+        // 전달받은 props 구조분해 할당
+        function SearchBox({setImgURL}) {
+        
+            // input 창에 입력 할 이미지 이름 관리
+            const [imageName, setImageName] = useState('');
+
+            const onChangeHandler = e => {
+                setImageName(e.target.value)
+            }
+
+            const onClickHandler = () => {
+                // 버튼 클릭 시 api 로부터 이모지 데이터를 조회한다.
+
+                // 1. fetch
+                // fetch('https://api.github.com/emojis')
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         setImgURL(data[imageName])
+                //     })
+
+                // 2. axios
+                axios.get('https://api.github.com/emojis')
+                .then(res => {console.log(res); setImgURL(res.data[imageName])})
+                .catch(e => console.log(e));
+
+                // 3. async/await
+
+                
+
+            }
+
+            return(
+                <>
+                    <input type="text" value={imageName} onChange={onChangeHandler}/>
+                    <button onClick={onClickHandler}>검색</button>
+                </>
+            );
+        }
+
+        function ImageBox({imgURL}) {
+
+            console.log('imgURL',imgURL)
+            return !!imgURL ? <img src={imgURL}/> : <h1>검색 결과 없음</h1>
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>
