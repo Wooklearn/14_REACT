@@ -1,7 +1,4 @@
 import {useState, useEffect} from 'react';
-// MenuDetails 컴포넌트가 호출되는 시점은 PathVariable 로
-// menuCode 가 넘어오는 시점이다. 해당 파라미터를 꺼내올 수 있는
-// useParam 라는 훅을 router 쪽에서 제공하고 있다.
 import {useParams} from 'react-router-dom';
 import {getMenuByMenuCode} from '../apis/MenuAPI';
 
@@ -14,8 +11,7 @@ function MenuDetails() {
         menuName: '',
         menuPrice: 0,
         categoryName: '',
-        detail : {
-        }
+        detail : {}
     });
 
     useEffect(() => {

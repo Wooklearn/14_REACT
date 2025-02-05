@@ -18,3 +18,10 @@ export function getMenuByMenuCode({menuCode}) {
 
     return menus.filter(menu => menu.menuCode === parseInt(manuCode))[0];
 }
+
+export function getSearchMenu(name) {
+    // match 함수
+    // 포함 여부에 따라 인자가 포함되어 있으면 반환을 한다.
+
+    return menus.filter(menu => menu.menuName.match(name));
+}

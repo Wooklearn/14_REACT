@@ -1,6 +1,8 @@
-import {useSearchParam} from 'react-router-dom';
+import {useSearchParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import boxStyle from './menu.module.css';
+import boxStyle from './Menu.module.css';
+import {getSearchMenu} from '../apis/MenuAPI';
+import MenuItem from '../items/MenuItem';
 
 function MenuSearchResult() {
 
@@ -14,12 +16,12 @@ function MenuSearchResult() {
     },[]);
 
 
-    
+
     return(
         <>
             <h1>검색 결과!!</h1>
             <div className={boxStyle.MenuBox}>
-                
+                {menuList.map(menu => <MenuItem key={menu.menuCode} menu={menu}/>)}
             </div>
         </>
     );

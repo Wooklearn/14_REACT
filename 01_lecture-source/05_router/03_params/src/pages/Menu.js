@@ -2,7 +2,7 @@
 import boxStyle from './Menu.module.css';
 import {useEffect, useState} from 'react';
 import { getMenuList } from '../apis/MenuAPI';
-import MenuItem from '../components/MenuItem';  // 경로를 수정
+import MenuItem from '../items/MenuItem';
 import {useNavigate} from 'react-router-dom';
 
 function Menu() {
@@ -31,7 +31,7 @@ function Menu() {
             <h1>하이미디어 레스토랑 메뉴!!</h1>
 
             <div>
-                <input type='search' name='nameName' onChange={changeHandler}/>
+                <input type='search' name='menuName' onChange={changeHandler}/>
                 <button onClick={ClickHandler}>매뉴 이름 검색</button>
             </div>
 
