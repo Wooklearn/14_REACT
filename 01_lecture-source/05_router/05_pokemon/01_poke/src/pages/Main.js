@@ -1,7 +1,26 @@
+import { useState, useEffect } from 'react';
+import { getPokemonList } from '../apis/PokeAPI';
+import { Link } from 'react-router-dom';
+
+
 function Main() {
-    return(
+
+    const [pokemonList, setPokemonList] = useState([]);
+
+    useEffect(() => {
+        async function pokeke() {
+            const data = await getPokemonList();
+
+            setPokemonList(data.results);
+        }
+
+        pokeke();
+
+    }, []);
+
+    return (
         <div>
-            <h1>메인 페이지 입니다.</h1>
+            <ul>{pokemonList.map((po, index) => <li key={index}>{po.name}</li>)} </ul>
         </div>
     );
 }
