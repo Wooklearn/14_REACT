@@ -7,7 +7,7 @@ import MenuDetails from './pages/MenuDetails';
 import MenuSearchResult from './pages/MenuSearchResult';
 
 function App() {
-  return (
+  return (s
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
