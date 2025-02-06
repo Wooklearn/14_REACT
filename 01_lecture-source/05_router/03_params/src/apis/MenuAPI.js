@@ -16,7 +16,7 @@ export function getMenuByMenuCode(menuCode) {
     // console.log('detail 페이지에서 넘어온 코드 : ', menuCode)
     // console.log(typeof menuCode);
 
-    return menus.filter(menu => menu.menuCode === parseInt(manuCode))[0];
+    return menus.filter(menu => menu.menuCode === parseInt(menuCode))[0];
 }
 
 export function getSearchMenu(name) {
