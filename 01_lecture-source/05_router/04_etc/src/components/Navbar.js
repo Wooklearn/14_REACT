@@ -1,6 +1,6 @@
 /* 공용으로 사용할 네비게이션바 컴포넌트 */
 // import {Link} from "react-router-dom";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 /*
     NavLink 는 Link 와 사용 방법은 거의 유사하다.
@@ -15,7 +15,7 @@ function Navbar() {
         backgroundColor: 'red'
     }
 
-    return(
+    return (
         <div>
             {/* 1번 */}
             {/* <ul>
@@ -33,9 +33,10 @@ function Navbar() {
 
             {/* 3번 스타일 지정 가능(눌렀는 지 안눌렀는 지 확인 가능) */}
             <ul>
-                <li><NavLink to={"/"} style={({isActive}) => isActive ? activeStyle : undefined}>메인</NavLink></li>
-                <li><NavLink to={"/menu"} style={({isActive}) => isActive ? activeStyle : undefined}>메뉴</NavLink></li>
-                <li><NavLink to={"/about"} style={({isActive}) => isActive ? activeStyle : undefined}>소개</NavLink></li>
+                <li><NavLink to={"/"} style={({ isActive }) => isActive ? activeStyle : undefined}>메인</NavLink></li>
+                <li><NavLink to={"/menu"} style={({ isActive }) => isActive ? activeStyle : undefined}>메뉴</NavLink></li>
+                <li><NavLink to={"/about"} style={({ isActive }) => isActive ? activeStyle : undefined}>소개</NavLink></li>
+                <li><NavLink to={"/mypage"} style={({ isActive }) => isActive ? activeStyle : undefined}>마이페이지</NavLink></li>
             </ul>
         </div>
     );
