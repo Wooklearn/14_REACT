@@ -48,7 +48,7 @@
                     case 'INCREMENT':
                         return { count: state.count + payload.incrementValue };
                     case 'DECREMENT':
-                        return { count: state.count + payload.decrementValue }
+                        return { count: state.count - payload.decrementValue }
                     default: return state;
                 }
             },
