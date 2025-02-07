@@ -46,7 +46,16 @@
                     payload: {name: '김용욱', age: 20}   // 옵션!!
                 }
             */
-            return
+
+            switch (action.type) {
+                case 'INCREMENT':
+                    return state + 1;
+                case 'DECREMENT':
+                    return state - 1;
+                default:
+                    return state;
+            }
+
         }
 
         // 저장소 만들건데 리듀서 곁들인..
@@ -61,6 +70,9 @@
 
         store.subscribe(() => console.log(store.getState()));
 
+        store.dispatch({ type: 'INCREMENT' })
+        store.dispatch({ type: 'INCREMENT' })
+        store.dispatch({ type: 'DECREMENT' })
 
     </script>
 
